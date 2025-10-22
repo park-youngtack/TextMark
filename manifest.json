@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Text Highlighter",
+  "version": "1.0",
+  "description": "키워드를 입력하면 웹페이지에서 해당 텍스트를 노란색으로 하이라이트합니다",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
