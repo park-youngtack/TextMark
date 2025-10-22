@@ -81,9 +81,15 @@ function highlightText(keyword) {
   console.log('[PAGE] 검색 키워드:', keyword);
   console.log('[PAGE] document.body 존재 여부:', !!document.body);
 
-  // 기존 하이라이트 제거
+  // 기존 하이라이트 제거 (인라인)
   console.log('[PAGE] 기존 하이라이트 제거 중...');
-  clearHighlights();
+  const existingHighlights = document.querySelectorAll('mark.text-highlighter-mark');
+  console.log('[PAGE] 제거할 기존 하이라이트 개수:', existingHighlights.length);
+  existingHighlights.forEach(mark => {
+    const parent = mark.parentNode;
+    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+    parent.normalize();
+  });
 
   console.log('[PAGE] TreeWalker 생성 중...');
   const walker = document.createTreeWalker(
