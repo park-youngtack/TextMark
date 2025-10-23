@@ -3,21 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Text Highlighter</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>TextMark</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
-    <h1>텍스트 하이라이터</h1>
-    <div class="input-group">
-      <input type="text" id="keyword-input" placeholder="하이라이트할 키워드를 입력하세요">
-      <button id="highlight-btn">하이라이트</button>
+    <!-- 헤더 -->
+    <div class="header">
+      <h1>TextMark</h1>
     </div>
-    <div class="button-group">
-      <button id="clear-btn">하이라이트 제거</button>
+
+    <!-- 키워드 입력 영역 -->
+    <div class="input-section">
+      <div class="input-group">
+        <input
+          type="text"
+          id="keyword-input"
+          placeholder="키워드 입력..."
+          autocomplete="off"
+        >
+        <select id="color-select" class="color-select">
+          <option value="#FFFF00" data-text-color="#000000">🟡 노란색</option>
+          <option value="#4ADE80" data-text-color="#000000">🟢 초록색</option>
+          <option value="#60A5FA" data-text-color="#000000">🔵 파란색</option>
+          <option value="#F472B6" data-text-color="#000000">🩷 분홍색</option>
+          <option value="#FB923C" data-text-color="#000000">🟠 주황색</option>
+          <option value="#C084FC" data-text-color="#000000">🟣 보라색</option>
+          <option value="#67E8F9" data-text-color="#000000">🔷 하늘색</option>
+          <option value="#BEF264" data-text-color="#000000">🍏 라임색</option>
+        </select>
+        <button id="add-btn" class="btn-add">+ 추가</button>
+      </div>
     </div>
+
+    <!-- 키워드 목록 -->
+    <div class="keywords-section">
+      <div class="section-header">
+        <h2>저장된 키워드</h2>
+        <span id="keyword-count" class="count">0</span>
+      </div>
+
+      <div id="keywords-list" class="keywords-list">
+        <!-- 키워드 아이템이 동적으로 추가됩니다 -->
+        <div class="empty-state">
+          <p>저장된 키워드가 없습니다</p>
+          <p class="hint">위에서 키워드를 추가해보세요</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 상태 메시지 -->
     <div id="status" class="status"></div>
   </div>
+
+  <!-- 스크립트 로드 순서 중요 -->
+  <script src="utils.js"></script>
+  <script src="storage.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

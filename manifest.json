@@ -1,19 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Text Highlighter",
+  "name": "TextMark",
   "version": "1.0",
-  "description": "키워드를 입력하면 웹페이지에서 해당 텍스트를 노란색으로 하이라이트합니다",
+  "description": "키워드를 저장하고 색상별로 자동 하이라이트하는 스마트 텍스트 마킹 도구",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_title": "TextMark - 스마트 텍스트 마킹"
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js"],
+      "js": ["utils.js", "storage.js", "content.js"],
       "run_at": "document_idle"
     }
   ]
