@@ -22,9 +22,6 @@
 
 ## 📦 설치 방법
 
-### Chrome Web Store (예정)
-곧 Chrome Web Store에서 설치 가능합니다.
-
 ### 개발자 모드로 설치
 
 1. Chrome 브라우저를 엽니다
